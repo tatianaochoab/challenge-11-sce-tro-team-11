@@ -3,18 +3,11 @@
 html body{
     max-width: 1440px;
     min-width: 376px;
+    height: 100vh;
     margin: auto;
 }
 
-#container-nav{
-    max-width: 1440px;
-    min-width: 376px;
-    box-sizing: border-box;
-    width: 100%;
-    height: 300px;
-}
-
-#container-nav .curved {
+body .curved {
     position: relative;
     transform: translate(100%, 0);
     background: hsl(207, 33%, 95%);
@@ -24,40 +17,105 @@ html body{
     border-bottom-left-radius: 50% 30%;
 }
 
-#container-nav #logo{
-    position: relative; 
-    transform: translate(70px, -330px);
-}
+#container{
+    position: fixed;
+    top: 0;
+    display: grid;
+    grid-template-columns: 12(1fr);
+    grid-auto-rows: 6(1fr);
+    grid-gap: 5px;
 
-#nav-bar{
-    display: inline-block;
+
+    max-width: 1440px;
+    min-width: 376px;
     box-sizing: border-box;
-    text-align: end;
-    height: 100px;
-    width: 80%;
-    padding: 20px 30px 20px 0px;
-    transform: translate(100px, -333px); 
+    width: 100%;
+    height: 100vh;
 }
 
-#nav-bar a{
+#container #header{
+    grid-column: 1 / 12;
+    grid-row: 1 / 3;
+
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+
+#container #header #div-logo{
+    width: 18%;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    padding-bottom: 50px;
+}
+
+#container #header #div-logo #logo{
+    width: 38px;
+    height:38px;
+}
+
+#container #header #nav-bar{
+    box-sizing: border-box;
+    padding: 50px 60px 50px 10px;
+    width: 80%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+
+}
+
+#container #header #nav-bar .nav-items{
+    text-align: justify;
+}
+
+#container #header #nav-bar a{
     text-decoration: none;
     margin: 10px;
     color: #000;
     font-family: 'Barlow Condensed', sans-serif;
     font-weight: 700;
+    padding: 20px;
 }
 
-#nav-bar #login{
-    margin-left: 50px;
+#container #header #nav-bar #login{
     color: hsl(231, 7%, 65%);
+    padding-top: 10px;
+
 }
 
-#nav-bar a:hover{
+#container #header #nav-bar a:hover{
     text-decoration: underline;
     margin: 10px;
     color: #000;
     font-family: 'Barlow Condensed', sans-serif;
     font-weight: 700;
+}
+
+#container #main{
+    grid-column: 1 / 12;
+    grid-row: 3 / 7;
+
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+
+#container #main #img-fondo{
+    box-sizing: border-box;
+    margin: 0 auto;
+    transform: translate(56%, 0%);
+}
+
+#container #main #img-fondo #fondo{
+    width: 90%;
+    height: 85%;
+    min-width: 50%;
+}
+
+#container #contenido{
+    border: solid 1px;
+    width: 100%;
 }
 
 
@@ -67,30 +125,49 @@ html body{
         max-width: 375px;
         margin: auto;
     }
-    
-    #container-nav{
-        box-sizing: border-box;
-        width: 100%;
-        height: 300px;
-    }
 
-    #container-nav .curved {
+    body .curved {
         position: relative;
         transform: translate(100%, 0);
         background: hsl(207, 33%, 95%);
         height: 60vh;
         width: 50%;
+        min-width: 50%;
         border-bottom-left-radius: 50% 30%;
     }
-    
-    #container-nav #logo{
-        position: absolute;
-        transform: translate(70px, -320px);
-        
+
+    #container #header{
+        height: 100px;
     }
-    
-    #container-nav #nav-bar{
-        transform: translate(90px, -430px);
+
+    #container #header #div-logo{
+        width: 18%;
+        display: flex;
+        justify-content: space-around;
+        align-items: flex-start;
+        padding-top: 20px;
+    }
+
+    #container #main #img-fondo{
+        box-sizing: border-box;
+        margin: 0 auto;
+        transform: translate(4%, -20%);
+    }
+
+    #container #main #img-fondo #fondo{
+        width: 120%;
+        height: 85%;
+        min-width: 50%;
+    }  
+
+    #container #header #nav-bar{
+        box-sizing: border-box;
+        padding: 50px 40px 50px 10px;
+        width: 80%;
+        height: 5px;
+        display: block;    
+        transform: translate(0%, -80%);
+        z-index: 1;
     }
     
     /*Menú desplegable*/
@@ -110,6 +187,7 @@ html body{
         height: 40px;
         text-indent: -9999px;
         width: 40px;
+        transform: translate(60%, -70%);
     }
     
     .control-menu .close {
@@ -128,9 +206,8 @@ html body{
     }
     
     .nav-items {
-        /*box-sizing: border-box;*/
         padding: 5px;
-        width: 80%;
+        width: 100%;
         clear: both;
         height: 0;
         overflow: hidden;
@@ -140,7 +217,9 @@ html body{
     #nav-bar:target .nav-items {
         background: #fff none repeat scroll 0 0;
         box-shadow:0 15px 20px rgba(0, 0, 0, 0.3);
-        height: 160px;
+        height: 250px;
+        width: 300px;
+        transform: translate(-17%, -15%);
         transition: height 0.4s ease-in-out 0s, background-color 0.9s ease 0s;
     }
     
@@ -156,6 +235,7 @@ html body{
         display: block;
     }
     
+
     /*Estilos menú*/
     
     .nav-items a {
@@ -163,21 +243,18 @@ html body{
         text-align: center;
         color: #000;
         display: block;
-        height: 20px;
+        height: 15px;
         line-height: 30px;
         font-family: 'Barlow Condensed', sans-serif;
         font-weight: 700;
+        padding: 10px;
     }
     
-    .nav-items #pricing{
-        padding-bottom: 10px;
-    }
-    
-    .nav-items #login{
+    #nav-bar .nav-items #login{
         border-top: 1px solid hsl(231, 7%, 65%);
         color: hsl(231, 7%, 65%);
-        padding-top: 10px;
-        transform: translate(-20px, 0);
+        transform: translate(0px, 0);
+        text-align: center;
     }
     
 }
